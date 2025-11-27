@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchdog Protection - Anti-Theft for Your Laptop</title>
+    <meta name="description" content="Free anti-theft protection for your laptop. Get instant Telegram alerts when your device is unplugged.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e 0%, #2a4a2a 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00CC6A, #00FF88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #D6D6D6;
+            margin-bottom: 40px;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00CC6A, #00FF88);
+            color: #1e1e1e;
+            box-shadow: 0 8px 20px rgba(0, 204, 106, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 204, 106, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 204, 106, 0.2);
+            border-color: rgba(0, 204, 106, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #00FF88;
+        }
+
+        .feature-card p {
+            color: #D6D6D6;
+            font-size: 1rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #00FF88;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00CC6A, #00FF88);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e1e1e;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #D6D6D6;
+        }
+
+        /* Languages */
+        .languages {
+            text-align: center;
+            margin: 80px 0;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+        }
+
+        .languages h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #00FF88;
+        }
+
+        .language-flags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 2rem;
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(0, 204, 106, 0.1), rgba(0, 255, 136, 0.05));
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+
+        .download-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .download-section p {
+            font-size: 1.2rem;
+            color: #D6D6D6;
+            margin-bottom: 40px;
+        }
+
+        .system-requirements {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px 40px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .system-requirements h4 {
+            color: #00FF88;
+            margin-bottom: 10px;
+        }
+
+        .system-requirements ul {
+            list-style: none;
+        }
+
+        .system-requirements li {
+            padding: 5px 0;
+            color: #D6D6D6;
+        }
+
+        .system-requirements li:before {
+            content: "✓ ";
+            color: #00CC6A;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: #00CC6A;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #00FF88;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Alert Note */
+        .alert-note {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .alert-note h4 {
+            color: #FFA500;
+            margin-bottom: 10px;
+        }
+
+        .alert-note p {
+            color: #D6D6D6;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🛡️</div>
+            <h1>Watchdog Protection</h1>
+            <p class="tagline">Never lose your laptop again. Get instant Telegram alerts when it's unplugged.</p>
+            
+            <div class="cta-buttons">
+                <a href="https://watchdogprotection.github.io/download" class="btn btn-primary">
+                    📥 Download Free (v1.0)
+                </a>
+                <a href="#how-it-works" class="btn btn-secondary">
+                    🎬 How It Works
+                </a>
+            </div>
+
+            <div class="alert-note">
+                <h4>⚠️ First-Time Installation Note</h4>
+                <p>Windows SmartScreen may show a warning for new apps. Click "More info" → "Run anyway". This is normal for apps without expensive certificates ($400/year). Your security is our priority!</p>
+            </div>
+        </header>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Telegram Alerts</h3>
+                <p>Instant notifications on your phone when your laptop is unplugged</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Loud Alarm</h3>
+                <p>Maximum volume audio alert that can't be muted or stopped easily</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Multi-Language</h3>
+                <p>Support for 12 languages including English, Arabic, Chinese, Persian, and more</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Private</h3>
+                <p>Device fingerprinting with PIN verification. Your data stays safe</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3>Cross-Platform</h3>
+                <p>Works on Windows and macOS</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🆓</div>
+                <h3>100% Free</h3>
+                <p>No subscriptions, no hidden fees. Completely free forever</p>
+            </div>
+        </section>
+
+        <section class="how-it-works" id="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Download & Install</h3>
+                    <p>Get the installer and run it on your laptop</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Connect Telegram</h3>
+                    <p>Scan QR code or click "Setup Telegram" to register</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Enable Protection</h3>
+                    <p>Toggle protection ON when you need it</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Stay Protected</h3>
+                    <p>Get alerts if someone unplugs your laptop</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="languages">
+            <h2>Available in 12 Languages</h2>
+            <div class="language-flags">
+                🇬🇧 🇸🇦 🇨🇳 🇫🇷 🇩🇪 🇮🇱 🇮🇹 🇰🇷 🇮🇷 🇵🇹 🇷🇺 🇪🇸
+            </div>
+            <p style="margin-top: 20px; color: #D6D6D6;">
+                English • Arabic • Chinese • French • German • Hebrew • Italian • Korean • Persian • Portuguese • Russian • Spanish
+            </p>
+        </section>
+
+        <section class="download-section">
+            <h2>Ready to Protect Your Laptop?</h2>
+            <p>Free download • No registration required • Works offline</p>
+            
+            <a href="https://watchdogprotection.github.io/download" class="btn btn-primary" style="font-size: 1.2rem; padding: 18px 50px;">
+                📥 Download Watchdog v1.0
+            </a>
+
+            <div class="system-requirements">
+                <h4>System Requirements:</h4>
+                <ul>
+                    <li>Windows 10/11 (64-bit)</li>
+                    <li>macOS 10.15 or later</li>
+                    <li>100 MB free disk space</li>
+                    <li>Internet connection (for Telegram)</li>
+                    <li>Microsoft Edge WebView2 (auto-installs)</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Watchdog Protection. All rights reserved.</p>
+            <p style="margin-top: 10px;">
+                <a href="mailto:watchdog.protection.info@gmail.com">Contact Support</a> • 
+                <a href="https://t.me/watchdog_protection_bot">Telegram Bot</a> •
+                <a href="https://watchdogprotection.github.io/privacy">Privacy Policy</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
